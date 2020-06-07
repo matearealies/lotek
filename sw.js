@@ -26,20 +26,20 @@ workbox.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-d30caec0a295218aec2e.js"
+    "url": "webpack-runtime-e3063c2b221a884cd0f2.js"
   },
   {
     "url": "framework-20335242239071f73386.js"
   },
   {
-    "url": "app-c80c67735a9118d177c6.js"
+    "url": "app-31208228a33d78ac1716.js"
   },
   {
     "url": "component---node-modules-gatsby-plugin-offline-app-shell-js-d9ff9b04d73194b6d64a.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "4dd1fa0bce94133d06541ca657ef59cf"
+    "revision": "6c262b2542067af72e4ff3c58bc0f311"
   },
   {
     "url": "page-data/offline-plugin-app-shell-fallback/page-data.json",
@@ -47,11 +47,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "6499333d1bfb94630a4fc1cbfeda01c5"
+    "revision": "65ffcabbc2bc2514ce52b8ffd6967b43"
   },
   {
     "url": "manifest.webmanifest",
-    "revision": "6105ed956df16d9eb7f4238b2cdd0f4c"
+    "revision": "c72b76182aa3af6e1e26fbb41b0d3c7b"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
@@ -70,12 +70,12 @@ const { NavigationRoute } = workbox.routing
 
 const navigationRoute = new NavigationRoute(async ({ event }) => {
   let { pathname } = new URL(event.request.url)
-  pathname = pathname.replace(new RegExp(`^/reponame`), ``)
+  pathname = pathname.replace(new RegExp(`^/lotek`), ``)
 
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/reponame/app-c80c67735a9118d177c6.js`))) {
+  if (!resources || !(await caches.match(`/lotek/app-31208228a33d78ac1716.js`))) {
     return await fetch(event.request)
   }
 
@@ -88,7 +88,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
     }
   }
 
-  const offlineShell = `/reponame/offline-plugin-app-shell-fallback/index.html`
+  const offlineShell = `/lotek/offline-plugin-app-shell-fallback/index.html`
   return await caches.match(offlineShell)
 })
 
